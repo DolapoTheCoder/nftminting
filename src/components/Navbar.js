@@ -16,13 +16,40 @@ const Navbar = () => {
                     <li className='navbar.li'>
                         <Link to="/">
                             <div className=''>
-                                NFT Mint
+                                Home
                             </div>
                         </Link>
                     </li>
+                    <li>
+                        <ul>
+                            {location.pathname === "/mint" ?
+                                <li>
+                                    <Link to="/mint">Mint NFT</Link>
+                                </li>
+                                :
+                                <li>
+                                    <Link to="/mint">Mint NFT</Link>
+                                </li>
+                            }
+                            {location.pathname === "/profile" ?
+                                <li>
+                                    <Link to="/profile">Profile</Link>
+                                </li>
+                                :
+                                <li>
+                                    <Link to="/profile">Profile</Link>
+                                </li>
+                            }
+                            <li>
+                                <button>{connected ? "Connected" : "Connect Wallet"}</button>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
-
+            <div>
+            {currentAddress !== "0x" ? "Connected to":"Not Connected. Please login to view NFTs"} {currentAddress !== "0x" ? (currentAddress.substring(0,15)+'...'):""}
+            </div>
         </div>
     )
 }

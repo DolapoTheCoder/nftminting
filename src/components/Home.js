@@ -6,7 +6,7 @@ function Home() {
     <div>
         <Navbar/>
       <header className='App-header'>
-        Hi User.
+        Home
       </header>
     </div>
   );
