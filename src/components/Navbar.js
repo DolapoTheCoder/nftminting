@@ -7,11 +7,9 @@ import './compCSS/Navbar.css';
 const NavBar = () => {
 
     return (
-        <h1 className='title'>NFT MINT
+        <h1 className='title'>
+        <Link to="/">NFT Mint
         <div className="navbar">
-            <div className="nft-mint">
-                <Link to="/">NFT Mint</Link>
-            </div>
 
             <div className="profile">
                 <Link to="/profile">Profile</Link>
@@ -24,6 +22,7 @@ const NavBar = () => {
                 Connect Wallet
             </button>
         </div>
+        </Link>
         </h1>
     );
 };
