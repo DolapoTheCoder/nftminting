@@ -68,9 +68,11 @@ const NavBar = () => {
                 <Link to="/mint">Mint</Link>
             </div>
 
+            {account ? 
             <div>
                 account: {account}
             </div>
+            : <></>}
 
             <button className='button' onClick={connectHandler}>
                 Connect Wallet
