@@ -1,58 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
 import './compCSS/Navbar.css';
 import { ethers } from 'ethers';
+import { useSelector, useDispatch } from 'react-redux';
+import { newUser } from '../reduxThings/actions/userActions';
 
 
 
 const NavBar = () => {
 
-    const [errorMessage, setErrorMessage] = useState(null);
-  const [account, setAccount] = useState(null);
-  const [balance, setBalance] = useState(null);
+  const [user, setUser] = useState('');
+  const [balance, setBalance] = useState(0);
+
+  const state = useSelector((state) => (state));
+  //console.log('Store:', state.user);
+  const dispatch = useDispatch();
+
+  const connectWallet = async () => {
+    if(window.ethereum) {
+      const accounts = await window.ethereum.request({method:"eth_requestAccounts"});
+      setUser(accounts[0]);
+      let balance = await window.ethereum.request({method: 'eth_getBalance', params: [accounts[0], 'latest']})
+      balance = Math.round(ethers.utils.formatEther(balance) * 1e4) / 1e4;      
+      setBalance(balance);
+      dispatch(newUser(accounts));
+    } else {
+      window.alert("Please download MetaMask wallet.")
+    }
+  }
 
   useEffect(() => {
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", accountsChanged);
-      window.ethereum.on("chainChanged", chainChanged);
-    }
-  }, []);
-
-  const connectHandler = async () => {
-    if (window.ethereum) {
-      try {
-        const res = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        await accountsChanged(res[0]);
-      } catch (err) {
-        console.error(err);
-        setErrorMessage("There was a problem connecting to MetaMask");
-      }
+    if (state.user.user === '') {
+      console.log('No User!')
     } else {
-      setErrorMessage("Install MetaMask");
+      console.log('State: ', state.user.user);
+      setUser(state.user.user);
     }
-  };
-
-  const accountsChanged = async (newAccount) => {
-    setAccount(newAccount);
-    try {
-      const balance = await window.ethereum.request({
-        method: "eth_getBalance",
-        params: [newAccount.toString(), "latest"],
-      });
-      setBalance(ethers.utils.formatEther(balance));
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("There was a problem connecting to MetaMask");
-    }
-  };
-
-  const chainChanged = () => {
-    setErrorMessage(null);
-    setAccount(null);
-    setBalance(null);
-  };
+  })
 
 
     return (
@@ -68,13 +52,13 @@ const NavBar = () => {
                 <Link to="/mint">Mint</Link>
             </div>
 
-            {account ? 
-            <div>
-                account: {account}
-            </div>
+            {user ? 
+              <div>
+                  account: {user}
+              </div>
             : <></>}
 
-            <button className='button' onClick={connectHandler}>
+            <button className='button' onClick={connectWallet}>
                 Connect Wallet
             </button>
         </div>
