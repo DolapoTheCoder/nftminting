@@ -13,7 +13,6 @@ const NavBar = () => {
   const [balance, setBalance] = useState(0);
 
   const state = useSelector((state) => (state));
-  //console.log('Store:', state.user);
   const dispatch = useDispatch();
 
   const connectWallet = async () => {
@@ -30,10 +29,7 @@ const NavBar = () => {
   }
 
   useEffect(() => {
-    if (state.user.user === '') {
-      console.log('No User!')
-    } else {
-      console.log('State: ', state.user.user);
+    if (state.user.user !== '') {
       setUser(state.user.user);
     }
   })

@@ -3,10 +3,6 @@ import {useSelector} from 'react-redux';
 
 
 function Home() {
-
-  const state = useSelector((state) => state);
-  console.log('Home', state);
-
   return (
     <div>
         <Navbar/>
