@@ -1,6 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config();
-const { API_URL, PRIVATE_KEY } = process.env;
+const { REACT_APP_API_URL, REACT_APP_PRIVATE_KEY } = process.env;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -9,8 +9,8 @@ module.exports = {
   networks: {
     hardhat: {},
     goerli: {
-      url: API_URL,
-      accounts: [`0x${PRIVATE_KEY}`]
+      url: REACT_APP_API_URL,
+      accounts: [`0x${REACT_APP_PRIVATE_KEY}`]
     }
   },
 };

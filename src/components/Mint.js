@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useSelector } from 'react-redux';
+import { mintNFT } from '../utils/interact';
 
 const Mint = () => {
 
@@ -20,6 +21,8 @@ const Mint = () => {
 
   const onMintPressed = async () => {
     console.log('Mint Pressed!')
+    const { status } = await mintNFT(url, name, description)
+    setStatus(status)
   }
 
   return (
