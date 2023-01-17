@@ -14,6 +14,9 @@ function Home() {
         <h1 className='wande'>
         I'm chilling with my Daddy Wande Coal
         </h1>
+        <h2 className='skaba'>
+          EEE SKABA EEEE SKOLOBOTO
+        </h2>
         <img className='coal' src={img} alt="Logo" />
 
     </div>
