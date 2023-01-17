@@ -12,7 +12,6 @@
     "assert": "^2.0.0",
     "axios": "^1.2.2",
     "bootstrap": "^3.4.1",
-    "fs": "*",
     "jsonfile": "^6.1.0",
     "os": "^0.1.2",
     "path": "^0.12.7",
@@ -55,15 +54,9 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@nomiclabs/hardhat-ethers": "^2.2.1",
-    "dotenv": "^8.6.0",
-    "dotenv-webpack": "^8.0.1",
+    "dotenv": "^16.0.1",
     "ethers": "^5.7.2",
     "hardhat": "^2.12.5",
     "webpack-config-utils": "^2.3.1"
-  },
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
   }
 }
