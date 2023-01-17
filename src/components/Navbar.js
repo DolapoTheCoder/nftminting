@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { newUser } from '../reduxThings/actions/userActions';
 
 
-
 const NavBar = () => {
 
   const [user, setUser] = useState('');
@@ -39,31 +38,37 @@ const NavBar = () => {
   })
 
 
-    return (
-        <h1 className='title'>
-        <Link to="/">NFT Mint
-        <div className="navbar">
-
-            <div className="profile">
-                <Link to="/profile">Profile</Link>
-            </div>
-
-            <div className='mint'>
-                <Link to="/mint">Mint</Link>
-            </div>
-
-            {user ? 
-              <div>
-                  account: {user}
-              </div>
-            : <></>}
-
-            <button className='button' onClick={connectWallet}>
-                Connect Wallet
-            </button>
+  return (
+    <div className="navbar">
+      <div className='title-container'>
+        <div className='title'>
+          <Link to="/">NFT Mint</Link>
         </div>
-        </Link>
-        </h1>
-    );
-};
+      </div>
+      
+      <div className='about'>
+        <Link to="/mint">About</Link>
+      </div>
+
+      <div className="profile">
+        <Link to="/profile">Profile</Link>
+      </div>
+
+
+      <div className='mint'>
+        <Link to="/mint">Mint</Link>
+      </div>
+  
+      {user ? 
+        <div>
+          account: {user}
+        </div>
+        : <></>}
+  
+      <button className='button' onClick={connectWallet}>
+        Connect Wallet
+      </button>
+    </div>
+  );
+      }
 export default NavBar;

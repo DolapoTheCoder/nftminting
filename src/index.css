@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: Circularstd;
+  src: url(../src/components/fonts/Circularstd.ttf);
+}
+h1{
+  font-family: Circularstd;
+}
+ 
+body {
+
+  background-color: black;
+  }
