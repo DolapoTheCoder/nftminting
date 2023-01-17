@@ -13,7 +13,7 @@ code {
 }
 @font-face {
   font-family: Circularstd;
-  src: url(/Users/basalebi/Documents/GitHub/nftminting/src/components/fonts/Circularstd.ttf);
+  src: url(../src/components/fonts/Circularstd.ttf);
 }
 h1{
   font-family: Circularstd;

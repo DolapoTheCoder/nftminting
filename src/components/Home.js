@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import {useSelector} from 'react-redux';
-import '/Users/basalebi/Documents/GitHub/nftminting/src/components/compCSS/Home.css'
-import img from '/Users/basalebi/Documents/GitHub/nftminting/src/components/Images/img.jpeg'
+import '../components/compCSS/Home.css';
+import img from '../components/Images/img.jpeg'
 
 function Home() {
 
