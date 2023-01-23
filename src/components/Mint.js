@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { useSelector, useDispatch } from 'react-redux';
+import { mintNFT } from './interactions/interact';
 
 const Mint = () => {
   const [walletAddress, setWallet] = useState("");
@@ -9,8 +10,14 @@ const Mint = () => {
   const [description, setDescription] = useState("");
   const [url, setURL] = useState("");
 
-  const onMintPressed = async () => { //TODO: implement
-    console.log('On Mint Pressed!')
+  const onMintPressed = async () => {
+    const { success, status } = await mintNFT(url, name, description);
+    setStatus(status);
+    if (success) {
+      setName("");
+      setDescription("");
+      setURL("");
+    }
   };
   
   const state = useSelector((state) => (state));
