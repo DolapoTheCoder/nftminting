@@ -9,7 +9,7 @@ import Mint from './components/Mint';
 import Profile from './components/Profile';
 import {Provider} from 'react-redux';
 import store from './reduxThings/store/store';
-
+import About from './components/About';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +20,7 @@ root.render(
           <Route path="/" element={<Home/>}/>
           <Route path="/mint" element={<Mint/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/about" element={<About/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>

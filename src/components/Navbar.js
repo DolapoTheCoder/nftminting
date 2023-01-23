@@ -47,7 +47,7 @@ const NavBar = () => {
       </div>
       
       <div className='about'>
-        <Link to="/mint">About</Link>
+        <Link to="/about">About</Link>
       </div>
 
       <div className="profile">
