@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { pinJSONToIPFS } from './pinata';
-require("dotenv").config();
+import Web3 from 'web3';
 
 const alchemyKey = process.env.REACT_APP_API_URL
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
-const web3 = createAlchemyWeb3(alchemyKey)
+// const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
+// const web3 = createAlchemyWeb3(alchemyKey)
 
 const contractAbi = require("../NFTMint.json")
 const contractAddress = "0xC3e517AD08d5afb5007715B445b457881d5A8db8"
@@ -12,7 +12,7 @@ const contractAddress = "0xC3e517AD08d5afb5007715B445b457881d5A8db8"
 //need to import address
 
 export const mintNFT = async (url, name, description) => {
-    if (url.trim() == "" || name.trim() == "" || description.trim() == "") {
+    if (url.trim() === "" || name.trim() === "" || description.trim() === "") {
         return {
             success: false,
             status: "! Pleae make sure all the fields are completed before minting.",
@@ -34,12 +34,13 @@ export const mintNFT = async (url, name, description) => {
         }
     }
     const tokenURI = pinataResponse.pinataUrl
-    window.contract = await new web3.eth.Contract(contractAbi, contractAddress)
+    const web3 = window.web3
+    const nftMint = await new web3.eth.Contract(contractAbi, contractAddress)
 
     const transactionParameters = {
         to: contractAddress, // Required except during contract publications.
         from: window.ethereum.selectedAddress, // must match user's active address.
-        data: window.contract.methods
+        data: nftMint.methods
           .mintNFT(window.ethereum.selectedAddress, tokenURI)
           .encodeABI(), //make call to NFT smart contract
     }
